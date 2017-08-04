@@ -16,11 +16,14 @@ No further dependencies are required
 ## Usage
 
 Print the help message (right now not so useful)
+
     geoJson -h
 
 To convert the file FILE.gpx to geojson type
+
     geoJson FILE.gpx
 
 The file prints the GeoJson to standart output. If you want to write it to a file use
+
     geoJson FILE.gpx > FILE.json
 
