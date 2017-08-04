@@ -10,17 +10,17 @@ It utilised rapidxml and is pretty fast.
 rapidxml is included in the archive in the version 1.13.
 No further dependencies are required
 
- make
- sudo make install
+    make
+    sudo make install
 
 ## Usage
 
 Print the help message (right now not so useful)
- geoJson -h
+    geoJson -h
 
 To convert the file FILE.gpx to geojson type
- geoJson FILE.gpx
+    geoJson FILE.gpx
 
 The file prints the GeoJson to standart output. If you want to write it to a file use
- geoJson FILE.gpx > FILE.json
+    geoJson FILE.gpx > FILE.json
 
