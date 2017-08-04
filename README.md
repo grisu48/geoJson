@@ -1,2 +1,16 @@
 # geoJson
 GPX to GeoJSON converter
+
+This is a small GPX to GeoJson converter utility that I quickly hacked within an hour while chatting.
+
+It utilised rapidxml and is pretty fast.
+
+## Installation
+
+rapidxml is included in the archive in the version 1.13.
+No further dependencies are required
+
+make
+sudo make install
+
+
