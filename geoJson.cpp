@@ -134,7 +134,6 @@ static bool processStream(istream &in, ostream &out = cout) {
                     }
                     
                     coords.push_back(coord);
-                    //out << coord.lon << "," << coord.lat << "," << coord.ele << " [" << coord.time << "]" << endl;
                     
                 }
             }
@@ -154,27 +153,36 @@ static bool processStream(istream &in, ostream &out = cout) {
 
 int main(int argc, char** argv) {
     if(argc < 2) {
+        cerr << "Reading from stdin until eof" << endl;
         processStream(cin, cout);
     } else {
-        ostream &out = cout;        // Output stream for future use
+        string o_filename;      // Output filename, if empty stdout
         
         for(int i=1;i<argc;i++) {
             string arg = argv[i];
             if(arg == "") continue;
             if(arg.at(0) == '-') {
                 if(arg == "-h" || arg == "--help") {
-                    cout << "GPX to GeoJson converter" << endl;
-                    cout << "  2017, phoenix" << endl << endl;
+                    cout << "GPX to GeoJson converter || 2017, phoenix" << endl << endl;
                     
                     cout << "Usage: " << argv[0] << " [OPTIONS] [FILES]" << endl;
                     cout << "OPTIONS:" << endl;
                     cout << "  -h   --help         Print this help message" << endl;
                     cout << "       --version      Print program version" << endl;
-                    cout << endl << "Sorry for the help message, that is pretty useless :-)" << endl;
+                    cout << "  -o FILE             Write output to FILE" << endl;
+                    cout << "                      -o must be before a FILE and matches for all successive files" << endl;
+                    cout << "                      It's possible to write different input files to different output files by chaining the commands:" << endl;
+                    cout << "                      " << argv[0] << " -o FILE1.json FILE1.gpx -o FILE2.json FILE2.gpx ..." << endl;
                     return EXIT_SUCCESS;
                 } else if(arg == "--version") {
                     cout << "1.0" << endl;
                     return EXIT_SUCCESS;
+                } else if(arg == "-o") {
+                    if(i >= argc-1) {
+                        cerr << "Missing argument: Output file" << endl;
+                        return EXIT_FAILURE;
+                    }
+                    o_filename = argv[++i];
                 } else {
                     cerr << "Illegal argument: " << arg << endl;
                     return EXIT_FAILURE;
@@ -183,7 +191,19 @@ int main(int argc, char** argv) {
                 ifstream f_in(argv[i]);
                 if(f_in.is_open()) {
                     
-                    processStream(f_in, out);
+                    if (o_filename.size() > 0) {
+                        ofstream f_out(o_filename.c_str(), ofstream::out | ofstream::app);
+                        if (!f_out.is_open()) {
+                            cerr << "Error opening output file " << o_filename << endl;
+                            return EXIT_FAILURE;
+                        }
+                        processStream(f_in, f_out);
+                        f_out.close();
+
+                    } else {
+                         processStream(f_in, cout);
+                    }
+
                     f_in.close();
                     
                 } else {
@@ -192,6 +212,7 @@ int main(int argc, char** argv) {
                 }   
             }
         }
+
     }
     return EXIT_SUCCESS;
 }

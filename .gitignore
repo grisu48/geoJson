@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Binary and output files
+geoJson
+*.json

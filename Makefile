@@ -5,9 +5,9 @@ CXX=g++
 CC=gcc
 
 # Default flags for all compilers
-O_FLAGS=-Wall -Werror -Wextra -pedantic -O2
+#O_FLAGS=-Wall -Werror -Wextra -pedantic -O2
 # Debugging flags
-#O_FLAGS=-Wall -Werror -Wextra -pedantic -O0 -g2
+O_FLAGS=-Wall -Werror -Wextra -pedantic -O0 -g2
 CXX_FLAGS=$(O_FLAGS) -std=c++11
 CC_FLAGS=$(O_FLAGS) -std=c99
 
