@@ -38,7 +38,10 @@ The file prints the GeoJson to standart output. If you want to write it to a fil
 An an example I provide the following file from Wikiloc: [iceland-landmannalaugar-porsmork.gpx](https://www.wikiloc.com/wikiloc/view.do?id=1120806)
 
 Test it with
+
     geoJson -o iceland-landmannalaugar-porsmork.json iceland-landmannalaugar-porsmork.gpx
+
+This write the file *iceland-landmannalaugar-porsmork.gpx* to *iceland-landmannalaugar-porsmork.json*
     
 ### Comparison to togeojson
 
@@ -47,12 +50,14 @@ and I don't see why using Node.js for such a small tool. Although performance is
 challenge :-)
 
 Benchmark on my FX-8350 using *togeojson*
+
     $ time togeojson iceland-landmannalaugar-porsmork.gpx >/dev/null
     real	0m0.563s
     user	0m0.680s
     sys	0m0.032s
 
 Same input file, same processor, now my tool
+
     $ time geoJson iceland-landmannalaugar-porsmork.gpx >/dev/null
     real	0m0.040s
     user	0m0.024s
