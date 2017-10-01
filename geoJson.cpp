@@ -70,8 +70,8 @@ static void printGeoJson(ostream &out, const vector<Coords> &coords) {
         else out << ", " << endl;
         
         out << "                    [" << endl;
-        out << "                        " << (*it).lat << "," << endl;
         out << "                        " << (*it).lon << "," << endl;
+        out << "                        " << (*it).lat << "," << endl;
         out << "                        " << (*it).ele << endl;
         out << "                    ]";
     }
