@@ -34,3 +34,9 @@ geoJson:    geoJson.cpp
 install:    geoJson
 	install geoJson /usr/local/bin
 
+release:	geoJson.cpp
+	g++ -Wall -Werror -Wextra -pedantic -O3 -std=c++11 -march=x86-64 -m64 -static -o geoJson-amd64-static geoJson.cpp
+	g++ -Wall -Werror -Wextra -pedantic -O3 -std=c++11 -march=x86-64 -m64 -o geoJson-amd64 geoJson.cpp
+	g++ -Wall -Werror -Wextra -pedantic -O3 -std=c++11 -march=i386 -m32 -o geoJson-x86 geoJson.cpp
+	g++ -Wall -Werror -Wextra -pedantic -O3 -std=c++11 -march=i386 -m32 -static -o geoJson-x86-static geoJson.cpp
+
