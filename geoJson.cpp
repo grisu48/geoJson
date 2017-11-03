@@ -18,6 +18,9 @@
 #include <vector>
 
 #include <stdio.h>
+#ifdef __linux__ 
+#include <unistd.h>
+#endif
 #include "rapidxml.hpp"
 
 using namespace std;
@@ -153,7 +156,11 @@ static bool processStream(istream &in, ostream &out = cout) {
 
 int main(int argc, char** argv) {
     if(argc < 2) {
-        cerr << "Reading from stdin until eof" << endl;
+#ifdef __linux__ 
+	// Print message only if terminal, not if pipe or file
+	if (::isatty(STDIN_FILENO))
+        	cerr << "Reading from stdin until eof" << endl;
+#endif
         processStream(cin, cout);
     } else {
         string o_filename;      // Output filename, if empty stdout
