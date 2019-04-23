@@ -1,7 +1,7 @@
 
 
 # Default compiler and compiler flags
-CXX=gcc
+CXX=g++
 
 # Default flags for all compilers
 O_FLAGS=-Wall -Werror -Wextra -pedantic -O3
