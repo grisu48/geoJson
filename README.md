@@ -1,4 +1,7 @@
 # geoJson
+
+[![Build Status](https://travis-ci.org/grisu48/geoJson.svg?branch=master)](https://travis-ci.org/grisu48/geoJson)
+
 GPX to GeoJSON converter
 
 This is a small GPX to GeoJson converter utility that I hacked within an hour while chatting
