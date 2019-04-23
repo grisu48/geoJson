@@ -1,15 +1,13 @@
 
 
 # Default compiler and compiler flags
-CXX=g++
-CC=gcc
+CXX=gcc
 
 # Default flags for all compilers
 O_FLAGS=-Wall -Werror -Wextra -pedantic -O3
 # Debugging flags
 #O_FLAGS=-Wall -Werror -Wextra -pedantic -g2 -Og
 CXX_FLAGS=$(O_FLAGS) -std=c++11
-CC_FLAGS=$(O_FLAGS) -std=c99
 
 
 # Binaries, object files, libraries and stuff
@@ -30,7 +28,10 @@ clean:
 	
 geoJson:    geoJson.cpp
 	$(CXX) $(CXX_FLAGS) -march=native -o $@ $< $(INCLUDE) $(LIBS)
-	
+
+test: 	geoJson
+	./geoJson test.gpx 1>/dev/null
+
 install:    geoJson
 	install geoJson /usr/local/bin
 
