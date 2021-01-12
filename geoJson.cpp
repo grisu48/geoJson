@@ -2,7 +2,7 @@
  * 
  * Title:         GPX to GeoJSON converter
  * Author:        Felix Niederwanger
- * License:       Copyright (c), 2015 Felix Niederwanger
+ * License:       Copyright (c), 2021 Felix Niederwanger
  *                MIT license (http://opensource.org/licenses/MIT)
  * Description:   Simple CLI utility to convert GPX to GeoJSON
  * 
@@ -16,6 +16,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <iomanip>
 
 #include <stdio.h>
 #ifdef __linux__ 
@@ -88,6 +89,8 @@ static void printGeoJson(ostream &out, const vector<Coords> &coords) {
 }
 
 static bool processStream(istream &in, ostream &out = cout) {
+	out << setprecision(7);
+	
     // Read stream to end
     stringstream buf;
     string text;
