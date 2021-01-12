@@ -1,16 +1,14 @@
 # geoJson
 
-[![Build Status](https://travis-ci.org/grisu48/geoJson.svg?branch=master)](https://travis-ci.org/grisu48/geoJson)
+![Build status badge](https://github.com/grisu48/geoJson/workflows/geoJson/badge.svg)
 
-GPX to GeoJSON converter
+This is a small `gpx` to `geojson` converter tool that I hacked within an hour while chatting. It uses rapidxml and is pretty fast.
 
-This is a small GPX to GeoJson converter utility that I hacked within an hour while chatting
+Fastest way to use this tool in Linux is to use the pre-build static binaries which are published as releases in this repository.
 
-It utilised rapidxml and is pretty fast.
+## Build
 
-## Installation
-
-rapidxml is included in the archive in the version 1.13.
+rapidxml is included in the repository (version 1.13).
 No further dependencies required
 
 Build and install the tool with
@@ -18,7 +16,7 @@ Build and install the tool with
     make
     sudo make install
 
-The program will be installed to /usr/local/bin by default
+The program will be installed to ``/usr/local/bin` by default
 
 ## Usage
 
@@ -48,9 +46,8 @@ This write the file *iceland-landmannalaugar-porsmork.gpx* to *iceland-landmanna
     
 ### Comparison to togeojson
 
-Originally I used the tool [togeojson](https://github.com/mapbox/togeojson), witch is a quiet nice tool but it works with Node.js
-and I don't see why using Node.js for such a small tool. Although performance is probably not an issue for this task I took it as a
-challenge :-)
+Back in the time I used the nice tool [togeojson](https://github.com/mapbox/togeojson) for converting a gpx file to geoJson. This tool is written in Node.js
+and I wanted hack a simpler and faster tool for doing this task. Although performance is probably not an issue for this task, I took the challenge ;-)
 
 Benchmark on my FX-8350 using *togeojson*
 
